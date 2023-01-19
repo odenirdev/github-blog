@@ -8,7 +8,7 @@ import {
   ProfileCardHeader,
 } from "./styles";
 
-import { Profile } from "..";
+import { Profile } from "../useUser";
 
 export const ProfileCard: React.FC<Profile> = ({
   name,

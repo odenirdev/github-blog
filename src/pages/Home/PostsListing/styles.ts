@@ -25,9 +25,10 @@ export const PostsListingContainer = styled.div`
   & > section {
     ul {
       list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+
+      li + li {
+        margin-top: 1rem;
+      }
     }
   }
 `;

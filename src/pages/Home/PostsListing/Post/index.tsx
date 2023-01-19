@@ -1,25 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import { Post as PostInterface } from "../../usePosts";
 
 import { PostContainer } from "./styles";
 
-export const Post: React.FC = () => {
+export const Post: React.FC<PostInterface> = ({ title, description }) => {
+  const renderDescription = () => {
+    return (
+      <p className="text-m">
+        {`${description.slice(0, 255)}... `}
+        <Link to="">ver mais</Link>{" "}
+      </p>
+    );
+  };
+
   return (
     <PostContainer>
       <header>
-        <strong className="title-m">
-          JavaScript data types and data structures
-        </strong>
+        <strong className="title-m">{title}</strong>
 
         <span className="text-s">Há 1 dia</span>
       </header>
 
-      <section>
-        <p className="text-m">
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in...
-        </p>
-      </section>
+      <section>{renderDescription()}</section>
     </PostContainer>
   );
 };

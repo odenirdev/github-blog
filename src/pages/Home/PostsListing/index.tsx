@@ -2,11 +2,19 @@ import React from "react";
 
 import { Input } from "../../../components/Input";
 
+import { Post as PostInterface } from "../usePosts";
+
 import { Post } from "./Post";
 
 import { PostsListingContainer } from "./styles";
 
-export const PostsListing: React.FC = () => {
+interface PostsListingProps {
+  posts: PostInterface[];
+}
+
+export const PostsListing: React.FC<PostsListingProps> = ({
+  posts,
+}: PostsListingProps) => {
   return (
     <PostsListingContainer>
       <header>
@@ -20,12 +28,11 @@ export const PostsListing: React.FC = () => {
 
       <section>
         <ul>
-          <li>
-            <Post />
-          </li>
-          <li>
-            <Post />
-          </li>
+          {posts.map((post) => (
+            <li>
+              <Post {...post} />
+            </li>
+          ))}
         </ul>
       </section>
     </PostsListingContainer>

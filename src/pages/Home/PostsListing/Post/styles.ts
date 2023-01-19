@@ -22,6 +22,13 @@ export const PostContainer = styled.div`
   & > section {
     p {
       color: ${(props) => props.theme.base.text};
+
+      overflow: hidden; /* "overflow" value must be different from "visible" */
+      text-overflow: ellipsis;
+    }
+
+    a {
+      color: ${(props) => props.theme.brand.blue};
     }
   }
 `;

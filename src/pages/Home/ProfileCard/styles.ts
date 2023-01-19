@@ -14,6 +14,14 @@ export const ProfileCardContainer = styled.div`
   gap: 1rem;
   padding: 2rem 2.5rem;
 
+  @media (max-width: 764px) {
+    grid-template-columns: 1fr;
+
+    img {
+      margin-inline: auto;
+    }
+  }
+
   img {
     width: 9.25rem;
     height: 9.25rem;
@@ -28,6 +36,10 @@ export const ProfileCardHeader = styled.header`
   p {
     color: ${(props) => props.theme.base.text};
     margin-bottom: 1.5rem;
+
+    @media (max-width: 764px) {
+      text-align: center;
+    }
   }
 `;
 
@@ -35,6 +47,11 @@ export const NameContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 764px) {
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
 
   a {
     color: ${(props) => props.theme.brand.blue};
@@ -56,6 +73,11 @@ export const NameContainer = styled.div`
 export const AssetsContainer = styled.div`
   display: flex;
   gap: 1.5rem;
+
+  @media (max-width: 764px) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   span {
     display: flex;

@@ -9,10 +9,24 @@ export interface ShowUserResponseDTO {
   html_url: string;
 }
 
+export interface ShowPostsResponseDTO {
+  total_count: number;
+  items: {
+    id: number;
+    title: string;
+    body: string;
+    created_at: string;
+  }[];
+}
+
 export const useGithubApi = () => {
   const showUser = (username: string): Promise<ShowUserResponseDTO> => {
     return api.get(`/users/${username}`);
   };
 
-  return { showUser };
+  const showPosts = (username: string): Promise<ShowPostsResponseDTO> => {
+    return api.get(`/search/issues?q=repo:${username}/github-blog`);
+  };
+
+  return { showUser, showPosts };
 };
