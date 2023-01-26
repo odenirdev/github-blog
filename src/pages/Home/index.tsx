@@ -6,12 +6,16 @@ import { useUser } from "./useUser";
 
 import { HomeContainer } from "./styles";
 
-export const Home: React.FC = () => {
-  const USERNAME = "odenirdev";
+interface HomeProps {
+  username: string;
+}
 
-  const { profile } = useUser({ username: USERNAME });
+export const Home: React.FC<HomeProps> = ({ username }) => {
+  const { profile } = useUser({ username });
 
-  const { posts } = usePosts({ username: USERNAME });
+  const { posts, register, handleSubmit, onSubmitSearch } = usePosts({
+    username,
+  });
 
   return (
     <HomeContainer>
@@ -20,7 +24,7 @@ export const Home: React.FC = () => {
       </header>
 
       <main>
-        <PostsListing {...{ posts }} />
+        <PostsListing {...{ posts, register, handleSubmit, onSubmitSearch }} />
       </main>
     </HomeContainer>
   );

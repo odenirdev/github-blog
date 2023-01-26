@@ -12,6 +12,7 @@ export const defaultTheme = {
     border: "#1C2F41",
     input: "#040F1A",
     label: "#3A536B",
+    button: "#3A536B",
     post: "#112131",
     title: "#E7EDF4",
   },

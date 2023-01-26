@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ProfileCardContainer = styled.div`
   max-width: 54rem;
   margin: 0 auto;
-  margin-top: -3rem;
 
   background: ${(props) => props.theme.base.profile};
 

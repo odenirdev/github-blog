@@ -17,8 +17,19 @@ export const PostsListingContainer = styled.div`
       }
     }
 
-    input {
-      width: 100%;
+    & > form {
+      display: grid;
+      grid-template-columns: 1fr 48px;
+      gap: 1rem;
+
+      button {
+        border: none;
+        border-radius: 6px;
+
+        background: ${(props) => props.theme.base.button};
+        color: ${(props) => props.theme.base.color};
+        cursor: pointer;
+      }
     }
   }
 

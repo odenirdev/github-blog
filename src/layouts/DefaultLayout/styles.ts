@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 import headerCoverJpg from "../../assets/header-cover.jpg";
 
-export const DefaultLayoutContainer = styled.div``;
+export const DefaultLayoutContainer = styled.div`
+  padding-bottom: 2rem;
+`;
 
 export const DefaultLayoutHeader = styled.header`
   padding: 3rem 1rem 5rem;
