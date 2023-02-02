@@ -1,31 +1,36 @@
-import { PostsListing } from "./PostsListing";
-import { ProfileCard } from "./ProfileCard";
+import React from "react";
+import { PaperPlaneTilt } from "phosphor-react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-import { usePosts } from "./usePosts";
-import { useUser } from "./useUser";
+import { Input } from "../../components/Input";
 
 import { HomeContainer } from "./styles";
 
-interface HomeProps {
+interface onSubmitInitData {
   username: string;
 }
 
-export const Home: React.FC<HomeProps> = ({ username }) => {
-  const { profile } = useUser({ username });
+export const Home: React.FC = () => {
+  const navigate = useNavigate();
 
-  const { posts, register, handleSubmit, onSubmitSearch } = usePosts({
-    username,
-  });
+  const { register, handleSubmit } = useForm<onSubmitInitData>();
+
+  const onSubmitInit = ({ username }: onSubmitInitData) => {
+    navigate(`/${username}`);
+  };
 
   return (
     <HomeContainer>
-      <header>
-        <ProfileCard {...profile} />
-      </header>
+      <h1>Entre com seu username do Github para iniciar com seu blog</h1>
 
-      <main>
-        <PostsListing {...{ posts, register, handleSubmit, onSubmitSearch }} />
-      </main>
+      <form onSubmit={handleSubmit(onSubmitInit)}>
+        <Input placeholder="https://github.com/" {...register("username")} />
+
+        <button title="Iniciar">
+          <PaperPlaneTilt size={24} />
+        </button>
+      </form>
     </HomeContainer>
   );
 };

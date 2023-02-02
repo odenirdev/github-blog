@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  FieldPathValues,
   FieldValues,
   UseFormHandleSubmit,
   UseFormRegister,

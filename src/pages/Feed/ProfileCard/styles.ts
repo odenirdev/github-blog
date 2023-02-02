@@ -24,6 +24,8 @@ export const ProfileCardContainer = styled.div`
   img {
     width: 9.25rem;
     height: 9.25rem;
+
+    border-radius: 999px;
   }
 `;
 

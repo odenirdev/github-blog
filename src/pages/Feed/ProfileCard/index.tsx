@@ -9,17 +9,21 @@ import {
 } from "./styles";
 
 import { Profile } from "../useUser";
+import { useParams } from "react-router-dom";
 
 export const ProfileCard: React.FC<Profile> = ({
+  avatar,
   name,
   url,
   bio,
   company,
   followers,
 }) => {
+  const { username = "" } = useParams();
+
   return (
     <ProfileCardContainer>
-      <img src="https://avatars.githubusercontent.com/u/49418374?v=4" alt="" />
+      <img src={avatar} alt="" />
 
       <section>
         <ProfileCardHeader>
@@ -36,12 +40,14 @@ export const ProfileCard: React.FC<Profile> = ({
 
         <AssetsContainer>
           <span>
-            <GithubLogo /> odenirdev
+            <GithubLogo /> {username}
           </span>
 
-          <span>
-            <Buildings /> {company}
-          </span>
+          {company && (
+            <span>
+              <Buildings /> {company}
+            </span>
+          )}
 
           <span>
             <Users /> {followers} seguidores

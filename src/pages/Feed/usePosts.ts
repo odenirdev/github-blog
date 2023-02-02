@@ -24,6 +24,8 @@ export const usePosts = ({ username }: UsePostsProps) => {
 
   const [posts, setPosts] = useState<Post[]>([]);
 
+  const [configured, setConfigured] = useState(false);
+
   const { showPosts } = useGithubApi();
 
   const parsePosts = (responsePosts: ShowPostsResponseDTO): Post[] => {
@@ -41,7 +43,12 @@ export const usePosts = ({ username }: UsePostsProps) => {
       const responsePosts = await showPosts(username, query);
 
       setPosts(parsePosts(responsePosts));
-    } catch (error) {
+
+      setConfigured(true);
+    } catch (error: any) {
+      const { status } = error.response;
+      if (status === 422) return;
+
       window.alert("Listar posts falhou");
     }
   };
@@ -54,5 +61,5 @@ export const usePosts = ({ username }: UsePostsProps) => {
     onShowPosts(data.search);
   };
 
-  return { posts, register, handleSubmit, onSubmitSearch };
+  return { configured, posts, register, handleSubmit, onSubmitSearch };
 };
